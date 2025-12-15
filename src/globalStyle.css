@@ -8,17 +8,18 @@
     --grey-color: #5B5F62;
 }
 
-
 @font-face {
-    font-family: '';
-    src: url(./assets/fonts/) format('truetype');
+    font-family: 'TV2';
+    src: url('https://fonts.tv2a.dk/TV2.woff2') format('woff2');
+    font-weight: 300 700;
+    font-display: swap;
 }
 
-@include respond-to(base-inline-nomediaquery) {
-  @font-face{font-family:'TV2';src:url('https://fonts.tv2a.dk/TV2.woff2') format('woff2') tech('variations'),url('https://fonts.tv2a.dk/TV2.woff2') format('woff2-variations');font-weight:300 700;font-display:swap;}
-  :root{font-variation-settings:'slnt' 0;font-synthesis:none;}
-  input,button,select,textarea{font-family:var(--font-family);font-variation-settings:'slnt' 0, 'ital' 0;}
-  em{font-weight:var(--font-regular);font-style:italic;font-variation-settings:'slnt' 10, 'ital' 1;}
-  strong{font-weight:var(--font-bold);font-style:normal;font-variation-settings:'slnt' 0, 'ital' 0;}
-  strong em,em strong{font-weight:var(--font-bold);font-style:italic;font-variation-settings:'slnt' 10, 'ital' 1;}
+* {
+    font-family: 'TV2', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
