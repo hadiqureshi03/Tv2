@@ -1,13 +1,239 @@
-<header>
+---
+import logo from '../assets/Tv2-logo.png';
+---
 
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <img src={logo.src} alt="TV2 Logo" class="logo">
+            <h1>MIT TV2</h1>
+        </div>
+        
+        <button class="burger-menu" id="burger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navigation (desktop og mobil menu) -->
+        <nav class="nav-buttons" id="nav-menu">
+            <button class="btn btn-news">
+                TV2 News
+                <span class="arrow">›</span>
+            </button>
+            <button class="btn btn-play">
+                TV2 Play
+                <span class="arrow">›</span>
+            </button>
+            <button class="btn btn-login">Log ud</button>
+        </nav>
+    </div>
 </header>
 
+<script>
+    const burgerMenu = document.getElementById('burger-menu');
+    const navMenu = document.getElementById('nav-menu');
 
+    burgerMenu?.addEventListener('click', () => {
+        burgerMenu.classList.toggle('active');
+        navMenu?.classList.toggle('active');
+    });
+</script>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     header {
         width: 100%;
-        height: 50px;
-        border: 2px solid red;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
+        display: block;
+    }
+
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 16px 64px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    }
+
+    .logo-section h1 {
+        font-family: 'TV2', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: #000000;
+        margin: 0;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+    }
+
+    .arrow {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+    .btn-news {
+        background-color: #d32f2f;
+        color: white;
+    }
+
+    .btn-play {
+        background-color: #1a1a1a;
+        color: white;
+    }
+
+    .btn-login {
+        background-color: white;
+        color: #000000;
+        border: 2px solid #000000;
+    }
+
+    /* Burger menu style */
+    .burger-menu {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1000;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    .burger-menu span {
+        width: 25px;
+        height: 3px;
+        background-color: #000000;
+        transition: all 0.3s ease;
+        border-radius: 3px;
+        display: block;
+        position: absolute;
+    }
+
+    .burger-menu span:nth-child(1) {
+        top: 12px;
+    }
+
+    .burger-menu span:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .burger-menu span:nth-child(3) {
+        bottom: 12px;
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+    }
+
+    /* Mobile responsiveness - under 900px */
+    @media (max-width: 900px) {
+        .header-container {
+            padding: 12px 24px;
+        }
+
+        .logo {
+            width: 43px;
+            height: 43px;
+        }
+
+        .logo-section h1 {
+            font-size: 16px;
+        }
+
+        /* Vis burger menu */
+        .burger-menu {
+            display: flex;
+        }
+        .nav-buttons {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 280px;
+            background-color: #ffffff;
+            flex-direction: column;
+            padding: 80px 24px 24px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            gap: 1.5rem;
+        }
+
+        .nav-buttons.active {
+            right: 0;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Desktop - over 900px */
+    @media (min-width: 901px) {
+        .burger-menu {
+            display: none;
+        }
+
+        .nav-buttons {
+            display: flex;
+        }
     }
 </style>
