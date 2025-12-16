@@ -1,5 +1,10 @@
 ---
 import logo from '../assets/Tv2-logo.png';
+import oversigt from '../assets/oversigt.png';
+import kort from '../assets/kort.png';
+import enheder from '../assets/enheder.png';
+import samtykke from '../assets/samtykke.png';
+import persondata from '../assets/persondata.png';
 ---
 
 <header>
@@ -17,6 +22,30 @@ import logo from '../assets/Tv2-logo.png';
 
         <!-- Navigation (desktop og mobil menu) -->
         <nav class="nav-buttons" id="nav-menu">
+            <!-- Navbar links (kun synlige på mobil) -->
+            <div class="mobile-nav-links">
+                <a href="/" class="mobile-nav-item">
+                    <img src={oversigt.src} alt="Oversigt" />
+                    <span>OVERSIGT</span>
+                </a>
+                <a href="/betalingskort" class="mobile-nav-item">
+                    <img src={kort.src} alt="Betalingskort" />
+                    <span>BETALINGSKORT</span>
+                </a>
+                <a href="/enheder" class="mobile-nav-item">
+                    <img src={enheder.src} alt="Enheder" />
+                    <span>ENHEDER</span>
+                </a>
+                <a href="/samtykke" class="mobile-nav-item">
+                    <img src={samtykke.src} alt="Samtykke" />
+                    <span>SAMTYKKER</span>
+                </a>
+                <a href="/persondata" class="mobile-nav-item">
+                    <img src={persondata.src} alt="Behandling af persondata" />
+                    <span>BEHANDLING AF PERSONDATA</span>
+                </a>
+            </div>
+
             <button class="btn btn-news">
                 TV2 News
                 <span class="arrow">›</span>
@@ -48,7 +77,7 @@ import logo from '../assets/Tv2-logo.png';
     header {
         width: 100%;
         background-color: #ffffff;
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 5px solid #B1B1B1;
         display: block;
     }
 
@@ -125,6 +154,11 @@ import logo from '../assets/Tv2-logo.png';
         background-color: white;
         color: #000000;
         border: 2px solid #000000;
+    }
+
+    /* Mobile nav links - skjult på desktop */
+    .mobile-nav-links {
+        display: none;
     }
 
     /* Burger menu style */
@@ -216,6 +250,47 @@ import logo from '../assets/Tv2-logo.png';
 
         .nav-buttons.active {
             right: 0;
+        }
+
+        /* Vis mobile nav links */
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.2s ease;
+        }
+
+        .mobile-nav-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .mobile-nav-item img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .mobile-nav-item span {
+            font-size: 14px;
+            font-weight: bold;
         }
 
         .btn {
