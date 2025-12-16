@@ -4,8 +4,16 @@
 
 <style>
     main {
-        width: 100%;
+        width: calc(100% - 300px);
         height: 400px;
         background-color: lightblue;
+        margin-left: 300px;
+    }
+
+    @media (max-width: 900px) {
+        main {
+            margin-left: 0;
+            width: 100%;
+        }
     }
 </style>
