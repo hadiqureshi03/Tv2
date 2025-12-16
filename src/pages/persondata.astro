@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../layouts/Header.astro'
+import Navbar from '../layouts/Navbar.astro'
+import Main from '../layouts/Main.astro'
+import Footer from '../layouts/Footer.astro'
+
+---
+
+<Layout>
+   	<Header />
+	<div class="page-wrapper">
+		<Navbar />
+		<div class="content-wrapper">
+			<Main >
+                <div id="main-container">
+
+                    <div id="main-content">
+                    <h1>Behandling a persondata</h1>
+                    <a href="/">Tilbage</a>
+
+                        <div id="main-text">
+                            <p>TV 2 beskytter de oplysninger, du deler med os og har afgivet om dig selv - f.eks. dit navn eller dit mobilnummer - i overensstemmelse med persondataloven.</p>
+                            <p>Vi overdrager ikke dine personlige oplysninger til andre, og du vil ikke modtage e-mails eller anden kontakt fra tredjepart, med mindre du aktivt har givet tilladelse til dette. Vi deler kun oplysninger med samarbejdspartnere, når det er nødvendigt for at kunne levere de produkter eller oplysninger, du har bedt om.</p>
+                            <p>Du kan læse mere om hvilke oplysninger, vi indsamler, og hvorfor i TV 2 Privatlivspolitik og vores Betingelser og retningslinjer.</p>
+
+                            <div id="main-buttons">
+                                <button id="data-button">HENT KOPI AF DATA</button>
+                                <button id="delete-button">SLET KONTO</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+			</Main>
+			<Footer />
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-wrapper {
+		display: flex;
+		position: relative;
+	}
+
+	.content-wrapper {
+		flex: 1;
+		border-left: 2px solid #B1B1B1;
+	}
+
+    #main-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #main-content {
+        width: 85%;
+        margin: 40px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    #main-text {
+        border: 2px solid grey;
+        padding: 3%;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: var(--background-color);
+    }
+
+    p {
+        line-height: 160%;
+        font-size: 24px;
+    }
+
+    #main-buttons {
+        margin-top: 10px;
+    }
+
+    button {
+        padding: 5px 20px;
+        border-radius: 15px;
+        margin-right: 3px;
+        border: none;
+        font-size: 18px;
+    }
+
+    #data-button {
+        background-color: var(--secondary-color);
+        color: var(--background-color);
+    }
+
+    #delete-button {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+    }
+
+	@media (max-width: 900px) {
+		.content-wrapper {
+			border-left: none;
+		}
+	}
+</style>
