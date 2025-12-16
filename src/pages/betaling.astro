@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../layouts/Header.astro'
+import Navbar from '../layouts/Navbar.astro'
+import Main from '../layouts/Main.astro'
+import Footer from '../layouts/Footer.astro'
+import mastercard from '../assets/mastercard.png';
+---
+
+<Layout>
+	<Header />
+	<div class="page-wrapper">
+		<Navbar />
+		<div class="content-wrapper">
+			<Main >
+				<div class="content-container">
+					<h1>BETALING</h1>
+					<a href="/" class="back-link">Tilbage</a>
+
+					<section class="payment-section">
+						<div class="payment-box">
+							<div class="card-info">
+								<img src={mastercard.src} alt="Mastercard" class="card-logo" />
+								<p class="card-number">•••• •••• •••• XXXX</p>
+							</div>
+							<div class="next-payment">
+								<p class="payment-label">NÆSTE BETALING:</p>
+								<p class="payment-date">01 JANUAR 2026</p>
+							</div>
+
+							<div class="payment-row">
+								<span class="payment-label-text">ADMINISTRER BETALINGSMETODE</span>
+								<span class="arrow">›</span>
+							</div>
+
+							<div class="payment-row">
+								<span class="payment-label-text">SE BETALINGSHISTORIK</span>
+								<span class="arrow">›</span>
+							</div>
+
+							<div class="payment-row">
+								<span class="payment-label-text">SKIFT BETALINGSDATO</span>
+								<span class="arrow">›</span>
+							</div>
+						</div>
+					</section>
+				</div>
+			</Main>
+			<Footer />
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-wrapper {
+		display: flex;
+		position: relative;
+	}
+
+	.content-wrapper {
+		flex: 1;
+		border-left: 2px solid #B1B1B1;
+	}
+
+	.content-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 40px 60px 120px;
+	}
+
+	.content-container h1 {
+		font-family: 'TV2', sans-serif;
+		font-size: var(--h1-size);
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0 0 20px 0;
+		letter-spacing: 0.02em;
+	}
+
+	.back-link {
+		color: var(--primary-color);
+		text-decoration: none;
+		font-size: 18px;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	.payment-section {
+		margin-top: 20px;
+	}
+
+	.payment-box {
+		background-color: white;
+		border: 2px solid var(--secondary-color);
+		border-radius: 8px;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.card-info {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		margin-bottom: 16px;
+	}
+
+	.card-logo {
+		width: 100px;
+		height: 100px;
+		object-fit: contain;
+		flex-shrink: 0;
+		margin-top: -37px;
+	}
+
+	.card-number {
+		font-size: 18px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0;
+		letter-spacing: 2px;
+		line-height: 1;
+	}
+
+	.next-payment {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid #E0E0E0;
+		margin-bottom: 16px;
+	}
+
+	.payment-label {
+		font-size: 14px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0;
+		letter-spacing: 0.5px;
+	}
+
+	.payment-date {
+		font-size: 14px;
+		color: var(--secondary-color);
+		margin: 0;
+	}
+
+	.payment-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 16px 0;
+		border-bottom: 1px solid #E0E0E0;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+	.payment-row:hover {
+		background-color: #f9f9f9;
+	}
+
+	.payment-row:last-of-type {
+		border-bottom: none;
+	}
+
+	.payment-label-text {
+		font-size: 16px;
+		font-weight: bold;
+		color: var(--secondary-color);
+	}
+
+	.payment-row .arrow {
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--secondary-color);
+		margin-right: 10px;
+	}
+
+	@media (max-width: 900px) {
+		.content-wrapper {
+			border-left: none;
+		}
+
+		.content-container {
+			padding: 24px;
+		}
+
+		.content-container h1 {
+			text-align: center;
+		}
+
+		.payment-box {
+			padding: 24px;
+		}
+
+		.card-info {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.card-logo {
+			width: 50px;
+			height: 50px;
+		}
+
+		.payment-row {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+</style>
