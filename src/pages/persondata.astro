@@ -16,7 +16,7 @@ import Footer from '../layouts/Footer.astro'
                 <div id="main-container">
 
                     <div id="main-content">
-                    <h1>Behandling a persondata</h1>
+                    <h1>Behandling af persondata</h1>
                     <a href="/">Tilbage</a>
 
                         <div id="main-text">
@@ -25,8 +25,12 @@ import Footer from '../layouts/Footer.astro'
                             <p>Du kan læse mere om hvilke oplysninger, vi indsamler, og hvorfor i TV 2 Privatlivspolitik og vores Betingelser og retningslinjer.</p>
 
                             <div id="main-buttons">
-                                <button id="data-button">HENT KOPI AF DATA</button>
-                                <button id="delete-button">SLET KONTO</button>
+                                <button id="data-button">
+                                    HENT KOPI AF DATA
+                                </button>
+                                <button id="delete-button">
+                                    SLET KONTO
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -86,15 +90,23 @@ import Footer from '../layouts/Footer.astro'
     }
 
     #main-buttons {
-        margin-top: 10px;
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
     }
 
     button {
-        padding: 5px 20px;
-        border-radius: 15px;
-        margin-right: 3px;
+        padding: 12px 32px;
+        border-radius: 25px;
         border: none;
-        font-size: 18px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+        opacity: 0.9;
     }
 
     #data-button {
