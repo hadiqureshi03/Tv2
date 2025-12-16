@@ -12,9 +12,31 @@ import Footer from '../layouts/Footer.astro'
 
 <Layout>
 	<Header />
-	<Navbar />
-	<Main >
+	<div class="page-wrapper">
+		<Navbar />
+		<div class="content-wrapper">
+			<Main >
 
-	</Main>
-	<Footer />
+			</Main>
+			<Footer />
+		</div>
+	</div>
 </Layout>
+
+<style>
+	.page-wrapper {
+		display: flex;
+		position: relative;
+	}
+
+	.content-wrapper {
+		flex: 1;
+		border-left: 2px solid #B1B1B1;
+	}
+
+	@media (max-width: 900px) {
+		.content-wrapper {
+			border-left: none;
+		}
+	}
+</style>

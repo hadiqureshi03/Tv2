@@ -1,11 +1,196 @@
-<footer> 
+---
+import logo from '../assets/Tv2-logo.png';
+---
 
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2>HAR DU BRUG FOR HJÆLP?</h2>
+                <div class="footer-links">
+                    <a href="/kundeservice" class="footer-link red">
+                        GÅ TIL KUNDESERVICE
+                        <span class="arrow-circle red-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="11.5" stroke="currentColor"/>
+                                <path d="M8 12H16M16 12L12 8M16 12L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://tv2.dk" class="footer-link black">
+                        GÅ TIL TV2.DK
+                        <span class="arrow-circle black-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="11.5" stroke="currentColor"/>
+                                <path d="M8 12H16M16 12L12 8M16 12L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src={logo.src} alt="TV2 Logo" class="footer-logo">
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <a href="/privatlivspolitik">PRIVATLIVSPOLITIK</a>
+            <span class="separator">•</span>
+            <a href="/cookie-indstillinger">COOKIE-INDSTILLINGER</a>
+            <span class="separator">•</span>
+            <span>© 2025 TV 2 DANMARK A/S</span>
+        </div>
+    </div>
 </footer>
 
 <style>
     footer {
         width: 100%;
-        height: 50px;
-        border: 2px solid green;
+        background-color: var(--background-color);
+        border-top: 2px solid #B1B1B1;
+        padding: 60px 80px 40px;
+        box-sizing: border-box;
+    }
+
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 60px;
+    }
+
+    .footer-left {
+        flex: 1;
+    }
+
+    .footer-left h2 {
+        font-family: 'TV2', sans-serif;
+        font-size: var(--h1-size);
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin: 0 0 40px 0;
+        letter-spacing: 0.02em;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: underline;
+        letter-spacing: 0.5px;
+        transition: opacity 0.2s ease;
+    }
+
+    .footer-link:hover {
+        opacity: 0.8;
+    }
+
+    .footer-link.red {
+        color: var(--primary-color);
+    }
+
+    .footer-link.black {
+        color: var(--secondary-color);
+    }
+    
+/* evt anden løsning her */
+    .arrow-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .arrow-circle svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .red-arrow {
+        color: var(--primary-color);
+    }
+
+    .black-arrow {
+        color: var(--secondary-color);
+    }
+
+    .footer-right {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .footer-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-top: -10px;
+    }
+
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 12px;
+        color: var(--grey-color);
+        letter-spacing: 0.5px;
+    }
+
+    .footer-bottom a {
+        color: #2600FF;
+        text-decoration: none;
+        font-weight: 600;
+        transition: opacity 0.2s ease;
+    }
+
+    .footer-bottom a:hover {
+        opacity: 0.8;
+    }
+
+    .separator {
+        color: var(--grey-color);
+    }
+
+    @media (max-width: 900px) {
+        footer {
+            width: 100%;
+            padding: 40px 24px 30px;
+        }
+
+        .footer-content {
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-left h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .footer-link {
+            font-size: 16px;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        .footer-bottom {
+            flex-wrap: wrap;
+            font-size: 11px;
+            gap: 8px;
+        }
     }
 </style>
