@@ -14,6 +14,7 @@ import Device from '../components/Device.astro'
 
     device.forEach(element => {
         element?.addEventListener('click', () => {
+                element.classList.toggle('expanded')
         });
     });
   
@@ -125,6 +126,9 @@ import Device from '../components/Device.astro'
         background-color: var(--primary-color);
         color: var(--background-color);
     }
+
+
+   
 
 	@media (max-width: 900px) {
 	}
