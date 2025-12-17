@@ -9,10 +9,14 @@ import persondata from '../assets/persondata.png';
 
 <header>
     <div class="header-container">
-        <a href="https://tv2.dk/" class="logo-section">
-            <img src={logo.src} alt="TV2 Logo" class="logo">
-            <h1>MIT TV2</h1>
-        </a>
+        <div class="logo-section">
+            <a href="https://tv2.dk/" class="logo-link">
+                <img src={logo.src} alt="TV2 Logo" class="logo">
+            </a>
+            <a href="/" class="title-link">
+                <h1>MIT TV2</h1>
+            </a>
+        </div>
         
         <button class="burger-menu" id="burger-menu" aria-label="Menu">
             <span></span>
@@ -91,12 +95,16 @@ import persondata from '../assets/persondata.png';
         display: flex;
         align-items: center;
         gap: 1rem;
+    }
+
+    .logo-link {
+        display: flex;
+        align-items: center;
         text-decoration: none;
-        cursor: pointer;
         transition: opacity 0.2s ease;
     }
 
-    .logo-section:hover {
+    .logo-link:hover {
         opacity: 0.8;
     }
 
@@ -106,6 +114,16 @@ import persondata from '../assets/persondata.png';
         object-fit: contain;
     }
 
+    .title-link {
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .title-link:hover {
+        opacity: 0.8;
+    }
+
+    .title-link h1,
     .logo-section h1 {
         font-family: 'TV2', sans-serif;
         font-size: 20px;

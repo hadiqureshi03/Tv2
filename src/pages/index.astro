@@ -79,13 +79,53 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 									</form>
 								</div>
 							</div>
-							<div class="account-row">
-								<span class="account-label">Skift e-mail</span>
-								<span class="arrow">›</span>
+							<div class="account-row expandable-row" id="change-email-row">
+								<div class="row-header">
+									<span class="account-label">Skift e-mail</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<form class="account-form" id="email-form">
+										<label>
+											NY E-MAIL
+											<input type="email" placeholder="Ny e-mail" id="ny-email" required />
+										</label>
+										<p class="form-save-message" id="email-save-message">Dine ændringer er blevet gemt</p>
+										<div class="form-buttons">
+											<button type="button" class="btn-save" id="btn-email-save">Gem og fortsæt</button>
+											<button type="button" class="btn-cancel" id="btn-email-cancel">AFBRYD</button>
+										</div>
+									</form>
+								</div>
 							</div>
-							<div class="account-row">
-								<span class="account-label">Skift adgangskode</span>
-								<span class="arrow">›</span>
+							<div class="account-row expandable-row" id="change-password-row">
+								<div class="row-header">
+									<span class="account-label">Skift adgangskode</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<form class="account-form" id="password-form">
+										<label>
+											NY ADGANGSKODE
+											<div class="password-input-wrapper">
+												<input type="password" placeholder="Ny adgangskode" id="ny-adgangskode" required />
+												<button type="button" class="toggle-password" id="toggle-ny-adgangskode">VIS</button>
+											</div>
+										</label>
+										<label>
+											GENTAG NY ADGANGSKODE
+											<div class="password-input-wrapper">
+												<input type="password" placeholder="Gentag ny adgangskode" id="gentag-adgangskode" required />
+												<button type="button" class="toggle-password" id="toggle-gentag-adgangskode">VIS</button>
+											</div>
+										</label>
+										<p class="form-save-message" id="password-save-message">Dine ændringer er blevet gemt</p>
+										<div class="form-buttons">
+											<button type="button" class="btn-save" id="btn-password-save">Gem ændringer</button>
+											<button type="button" class="btn-cancel" id="btn-password-cancel">AFBRYD</button>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -153,12 +193,28 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		}, 3000);
 	});
 
-	// Dropdown functionalitet 
+	// Dropdown functionalitet for kontooplysninger
 	const changeAccountRow = document.getElementById('change-account-row');
 	const rowHeader = changeAccountRow?.querySelector('.row-header');
 
 	rowHeader?.addEventListener('click', () => {
 		changeAccountRow?.classList.toggle('expanded');
+	});
+
+	// Dropdown functionalitet for e-mail
+	const changeEmailRow = document.getElementById('change-email-row');
+	const emailRowHeader = changeEmailRow?.querySelector('.row-header');
+
+	emailRowHeader?.addEventListener('click', () => {
+		changeEmailRow?.classList.toggle('expanded');
+	});
+
+	// Dropdown functionalitet for adgangskode
+	const changePasswordRow = document.getElementById('change-password-row');
+	const passwordRowHeader = changePasswordRow?.querySelector('.row-header');
+
+	passwordRowHeader?.addEventListener('click', () => {
+		changePasswordRow?.classList.toggle('expanded');
 	});
 
 	// Save button funktionalitet
@@ -182,7 +238,7 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 			fodselsdato.value = '';
 			kon.value = '';
 
-			// Gemmer besked efter 3 seconds
+			// fjerner besked efter 3 seconds
 			setTimeout(() => {
 				formSaveMessage?.classList.remove('show');
 			}, 3000);
@@ -196,6 +252,93 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		if (mobilnummer) mobilnummer.value = '';
 		if (fodselsdato) fodselsdato.value = '';
 		if (kon) kon.value = '';
+	});
+
+	// E-mail form funktionalitet
+	const btnEmailSave = document.getElementById('btn-email-save');
+	const btnEmailCancel = document.getElementById('btn-email-cancel');
+	const emailSaveMessage = document.getElementById('email-save-message');
+	const nyEmail = document.getElementById('ny-email');
+
+	btnEmailSave?.addEventListener('click', () => {
+		// Check required field
+		if (nyEmail && nyEmail.value) {
+			// Viser beskeden
+			emailSaveMessage?.classList.add('show');
+
+			// Fjerner value efter gemning
+			nyEmail.value = '';
+
+			// Gemmer besked efter 3 seconds
+			setTimeout(() => {
+				emailSaveMessage?.classList.remove('show');
+			}, 3000);
+		}
+	});
+
+	// Cancel button funktionalitet for e-mail
+	btnEmailCancel?.addEventListener('click', () => {
+		// Fjerner value
+		if (nyEmail) nyEmail.value = '';
+	});
+
+	// Adgangskode form funktionalitet
+	const btnPasswordSave = document.getElementById('btn-password-save');
+	const btnPasswordCancel = document.getElementById('btn-password-cancel');
+	const passwordSaveMessage = document.getElementById('password-save-message');
+	const nyAdgangskode = document.getElementById('ny-adgangskode');
+	const gentagAdgangskode = document.getElementById('gentag-adgangskode');
+
+	btnPasswordSave?.addEventListener('click', () => {
+		// Check required fields
+		if (nyAdgangskode && gentagAdgangskode && nyAdgangskode.value && gentagAdgangskode.value) {
+			// Viser beskeden
+			passwordSaveMessage?.classList.add('show');
+
+			// Fjerner values efter gemning
+			nyAdgangskode.value = '';
+			gentagAdgangskode.value = '';
+
+			// Gemmer besked efter 3 seconds
+			setTimeout(() => {
+				passwordSaveMessage?.classList.remove('show');
+			}, 3000);
+		}
+	});
+
+	// Cancel button funktionalitet for adgangskode
+	btnPasswordCancel?.addEventListener('click', () => {
+		// Fjerner values
+		if (nyAdgangskode) nyAdgangskode.value = '';
+		if (gentagAdgangskode) gentagAdgangskode.value = '';
+	});
+
+	// Toggle password visibility funktionalitet
+	const toggleNyAdgangskode = document.getElementById('toggle-ny-adgangskode');
+	const toggleGentagAdgangskode = document.getElementById('toggle-gentag-adgangskode');
+
+	toggleNyAdgangskode?.addEventListener('click', () => {
+		if (nyAdgangskode) {
+			if (nyAdgangskode.type === 'password') {
+				nyAdgangskode.type = 'text';
+				toggleNyAdgangskode.textContent = 'SKJUL';
+			} else {
+				nyAdgangskode.type = 'password';
+				toggleNyAdgangskode.textContent = 'VIS';
+			}
+		}
+	});
+
+	toggleGentagAdgangskode?.addEventListener('click', () => {
+		if (gentagAdgangskode) {
+			if (gentagAdgangskode.type === 'password') {
+				gentagAdgangskode.type = 'text';
+				toggleGentagAdgangskode.textContent = 'SKJUL';
+			} else {
+				gentagAdgangskode.type = 'password';
+				toggleGentagAdgangskode.textContent = 'VIS';
+			}
+		}
 	});
 </script>
 
@@ -334,7 +477,7 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 	.account-email {
 		font-size: 14px;
-		color: var(--primary-color);
+		color: #0066CC;
 		text-decoration: underline;
 		margin: 0;
 	}
@@ -415,6 +558,12 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		letter-spacing: 0.5px;
 	}
 
+	.password-input-wrapper {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
 	.account-form input {
 		width: 100%;
 		padding: 12px 16px;
@@ -424,6 +573,27 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		color: var(--secondary-color);
 		background-color: #FFFFFF;
 		box-sizing: border-box;
+	}
+
+	.password-input-wrapper input {
+		padding-right: 60px;
+	}
+
+	.toggle-password {
+		position: absolute;
+		right: 12px;
+		background: none;
+		border: none;
+		color: var(--secondary-color);
+		font-size: 12px;
+		font-weight: bold;
+		cursor: pointer;
+		padding: 4px 8px;
+		transition: opacity 0.2s ease;
+	}
+
+	.toggle-password:hover {
+		opacity: 0.7;
 	}
 
 	.account-form input::placeholder {
@@ -467,8 +637,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 	}
 
 	.btn-cancel {
-		background-color: #078A1D;
-		color: white;
+		background-color: rgb(235, 235, 238);
+		color: var(--secondary-color);
 	}
 
 	.btn-save:hover,
