@@ -18,8 +18,8 @@ const { deviceIcon, deviceName, lastUsed } = Astro.props;
             <p>{deviceName}</p>
             <p>{lastUsed}</p>
         </div>
-        <div>
-            ^
+        <div class="arrow-icon">
+            ›
         </div>
         <div id="border-seperator">
 
@@ -39,13 +39,14 @@ const { deviceIcon, deviceName, lastUsed } = Astro.props;
         background-color: var(--background-color);
         max-height: 50px;
         overflow: hidden;
-        transition: 0.3s
-    }   
+        transition: max-height 0.3s ease;
+        cursor: pointer;
+    }
 
     /* added and removed by the function in enheder.astro */
     .expanded {
         max-height: 170px;
-        transition: 0.3s
+        transition: max-height 0.3s ease;
     }
 
     #device-container {
@@ -87,5 +88,18 @@ const { deviceIcon, deviceName, lastUsed } = Astro.props;
         margin: auto;
     }
 
-  
+    .arrow-icon {
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .device-box.expanded .arrow-icon {
+        transform: rotate(90deg);
+    }
+
 </style>
