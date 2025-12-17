@@ -8,7 +8,7 @@
 <div class="device-box" >
     <div id="device-container">
         <div id="device-icon">
-
+            <img src="../assets/device-icons/phone-logo.png" />
         </div>
         <div>
             <p>    Iphone - Mobil Browser </p>
@@ -34,8 +34,15 @@
         margin-top: 20px;
         border-radius: 10px;
         background-color: var(--background-color);
-        max-height: 170px;
+        max-height: 50px;
         overflow: hidden;
+        transition: 0.3s
+    }   
+
+    /* added and removed by the function in enheder.astro */
+    .expanded {
+        max-height: 170px;
+        transition: 0.3s
     }
 
     #device-container {
@@ -69,7 +76,5 @@
         margin: auto;
     }
 
-    summary::marker {
-        margin: 0;
-    }
+  
 </style>
