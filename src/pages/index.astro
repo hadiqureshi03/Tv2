@@ -48,9 +48,36 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 								<h2 class="account-name">Hans Hansen</h2>
 								<p class="account-email">hans.hansen@gmail.com</p>
 							</div>
-							<div class="account-row">
-								<span class="account-label">Skift kontooplysninger</span>
-								<span class="arrow">›</span>
+							<div class="account-row expandable-row" id="change-account-row">
+								<div class="row-header">
+									<span class="account-label">Skift kontooplysninger</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<form class="account-form" id="account-form">
+										<label>
+											FORNAVN
+											<input type="text" placeholder="Fornavn" id="fornavn" required />
+										</label>
+										<label>
+											MOBILNUMMER (VALGFRIT)
+											<input type="tel" placeholder="Mobilnummer" id="mobilnummer" />
+										</label>
+										<label>
+											FØDSELSDATO
+											<input type="text" placeholder="Fødselsdato" id="fodselsdato" required />
+										</label>
+										<label>
+											KØN
+											<input type="text" placeholder="Køn" id="kon" required />
+										</label>
+										<p class="form-save-message" id="form-save-message">Dine ændringer er blevet gemt</p>
+										<div class="form-buttons">
+											<button type="button" class="btn-save" id="btn-save">Gem ændringer</button>
+											<button type="button" class="btn-cancel">AFBRYD</button>
+										</div>
+									</form>
+								</div>
 							</div>
 							<div class="account-row">
 								<span class="account-label">Skift e-mail</span>
@@ -112,6 +139,7 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 </Layout>
 
 <script>
+	// @ts-nocheck - gør at value ikke bliver tjekket for typescript fejl 
 	const regionDropdown = document.getElementById('region-dropdown');
 	const saveMessage = document.getElementById('save-message');
 
@@ -123,6 +151,51 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		setTimeout(() => {
 			saveMessage?.classList.remove('show');
 		}, 3000);
+	});
+
+	// Dropdown functionalitet 
+	const changeAccountRow = document.getElementById('change-account-row');
+	const rowHeader = changeAccountRow?.querySelector('.row-header');
+
+	rowHeader?.addEventListener('click', () => {
+		changeAccountRow?.classList.toggle('expanded');
+	});
+
+	// Save button funktionalitet
+	const btnSave = document.getElementById('btn-save');
+	const btnCancel = document.querySelector('.btn-cancel');
+	const formSaveMessage = document.getElementById('form-save-message');
+	const fornavn = document.getElementById('fornavn');
+	const fodselsdato = document.getElementById('fodselsdato');
+	const kon = document.getElementById('kon');
+	const mobilnummer = document.getElementById('mobilnummer');
+
+	btnSave?.addEventListener('click', () => {
+		// Check required fields
+		if (fornavn && fodselsdato && kon && fornavn.value && fodselsdato.value && kon.value) {
+			// Viser beskeden
+			formSaveMessage?.classList.add('show');
+
+			// Fjerner values efter gemning
+			fornavn.value = '';
+			if (mobilnummer) mobilnummer.value = '';
+			fodselsdato.value = '';
+			kon.value = '';
+
+			// Gemmer besked efter 3 seconds
+			setTimeout(() => {
+				formSaveMessage?.classList.remove('show');
+			}, 3000);
+		}
+	});
+
+	// Cancel button funktionalitet
+	btnCancel?.addEventListener('click', () => {
+		// Fjerner alle values
+		if (fornavn) fornavn.value = '';
+		if (mobilnummer) mobilnummer.value = '';
+		if (fodselsdato) fodselsdato.value = '';
+		if (kon) kon.value = '';
 	});
 </script>
 
@@ -268,11 +341,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 	.account-row {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 12px 0;
+		flex-direction: column;
 		border-bottom: 1px solid #E0E0E0;
-		cursor: pointer;
 		transition: background-color 0.2s ease;
 	}
 
@@ -282,6 +352,15 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 	.account-row:last-of-type {
 		margin-bottom: 0;
+	}
+
+	.row-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px 0;
+		cursor: pointer;
+		width: 100%;
 	}
 
 	.account-label {
@@ -295,6 +374,106 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		line-height: 1;
 		color: var(--secondary-color);
 		margin-right: 10px;
+	}
+
+	.arrow-icon {
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--secondary-color);
+		margin-right: 10px;
+		transition: transform 0.3s ease;
+	}
+
+	.expandable-row.expanded .arrow-icon {
+		transform: rotate(90deg);
+	}
+
+	.expandable-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease;
+	}
+
+	.expandable-row.expanded .expandable-content {
+		max-height: 600px;
+		padding: 20px 0;
+	}
+
+	.account-form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.account-form label {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		font-size: 12px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		letter-spacing: 0.5px;
+	}
+
+	.account-form input {
+		width: 100%;
+		padding: 12px 16px;
+		border: 2px solid var(--secondary-color);
+		border-radius: 4px;
+		font-size: 16px;
+		color: var(--secondary-color);
+		background-color: #FFFFFF;
+		box-sizing: border-box;
+	}
+
+	.account-form input::placeholder {
+		color: #999;
+	}
+
+	.form-save-message {
+		font-size: 14px;
+		font-weight: bold;
+		color: #078A1D;
+		margin: 0;
+		opacity: 0;
+		transition: opacity 0.5s ease-in-out;
+		pointer-events: none;
+	}
+
+	.form-save-message.show {
+		opacity: 1;
+	}
+
+	.form-buttons {
+		display: flex;
+		gap: 12px;
+		margin-top: 12px;
+	}
+
+	.btn-save,
+	.btn-cancel {
+		padding: 12px 32px;
+		border-radius: 25px;
+		border: none;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	.btn-save {
+		background-color: var(--secondary-color);
+		color: white;
+	}
+
+	.btn-cancel {
+		background-color: #078A1D;
+		color: white;
+	}
+
+	.btn-save:hover,
+	.btn-cancel:hover {
+		opacity: 0.9;
 	}
 
 	.edit-btn {
