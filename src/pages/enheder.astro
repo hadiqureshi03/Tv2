@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../layouts/Header.astro'
+import Navbar from '../layouts/Navbar.astro'
+import Main from '../layouts/Main.astro'
+import Footer from '../layouts/Footer.astro'
+
+import Device from '../components/Device.astro'
+---
+
+<script>
+
+    const device = document.querySelectorAll(".device-box")
+
+    device.forEach(element => {
+        element?.addEventListener('click', () => {
+        });
+    });
+  
+
+</script>
+
+<Layout>
+   	<Header />
+	<div class="page-wrapper">
+		<Navbar />
+		<div class="content-wrapper">
+			<Main >
+                <div id="main-container">
+
+                    <div id="main-content">
+                        <h1>Enheder</h1>
+                        <a href="/">Tilbage</a>
+
+                            <Device />
+
+                            <Device />
+
+                            <Device />
+
+                            <Device />
+
+                            <Device />
+
+                    </div>
+
+                </div>
+			</Main>
+			<Footer />
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.page-wrapper {
+		display: flex;
+		position: relative;
+	}
+
+	.content-wrapper {
+		flex: 1;
+		border-left: 2px solid #B1B1B1;
+	}
+
+    #main-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #main-content {
+        width: 85%;
+        margin: 40px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 18px;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .device-box {
+        border: 2px solid grey;
+        padding: 3%;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: var(--background-color);
+    }
+
+    p {
+        line-height: 160%;
+        font-size: 24px;
+    }
+
+    #main-buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+    }
+
+    button {
+        padding: 12px 32px;
+        border-radius: 25px;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    #data-button {
+        background-color: var(--secondary-color);
+        color: var(--background-color);
+    }
+
+    #delete-button {
+        background-color: var(--primary-color);
+        color: var(--background-color);
+    }
+
+	@media (max-width: 900px) {
+		.content-wrapper {
+			border-left: none;
+		}
+	}
+</style>
