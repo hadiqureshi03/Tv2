@@ -5,7 +5,20 @@ import Navbar from '../layouts/Navbar.astro'
 import Main from '../layouts/Main.astro'
 import Footer from '../layouts/Footer.astro'
 
+import Device from '../components/Device.astro'
 ---
+
+<script>
+
+    const device = document.querySelectorAll(".device-box")
+
+    device.forEach(element => {
+        element?.addEventListener('click', () => {
+        });
+    });
+  
+
+</script>
 
 <Layout>
    	<Header />
@@ -16,23 +29,19 @@ import Footer from '../layouts/Footer.astro'
                 <div id="main-container">
 
                     <div id="main-content">
-                    <h1>Behandling af persondata</h1>
-                    <a href="/">Tilbage</a>
+                        <h1>Enheder</h1>
+                        <a href="/">Tilbage</a>
 
-                        <div id="main-text">
-                            <p>TV 2 beskytter de oplysninger, du deler med os og har afgivet om dig selv - f.eks. dit navn eller dit mobilnummer - i overensstemmelse med persondataloven.</p>
-                            <p>Vi overdrager ikke dine personlige oplysninger til andre, og du vil ikke modtage e-mails eller anden kontakt fra tredjepart, med mindre du aktivt har givet tilladelse til dette. Vi deler kun oplysninger med samarbejdspartnere, når det er nødvendigt for at kunne levere de produkter eller oplysninger, du har bedt om.</p>
-                            <p>Du kan læse mere om hvilke oplysninger, vi indsamler, og hvorfor i TV 2 Privatlivspolitik og vores Betingelser og retningslinjer.</p>
+                            <Device />
 
-                            <div id="main-buttons">
-                                <button id="data-button">
-                                    HENT KOPI AF DATA
-                                </button>
-                                <button id="delete-button">
-                                    SLET KONTO
-                                </button>
-                            </div>
-                        </div>
+                            <Device />
+
+                            <Device />
+
+                            <Device />
+
+                            <Device />
+
                     </div>
 
                 </div>
@@ -75,7 +84,7 @@ import Footer from '../layouts/Footer.astro'
         margin-bottom: 20px;
     }
 
-    #main-text {
+    .device-box {
         padding: 3%;
         margin-top: 20px;
         border-radius: 4px;

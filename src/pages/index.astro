@@ -35,7 +35,7 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 								<div class="subscription-price">
 									<span>PRISER FRA 69KR./MD</span>
 								</div>
-								<button class="subscription-btn">Abonnement</button>
+								<a href="https://checkout.play.tv2.dk/" class="subscription-btn">Abonnement</a>
 							</div>
 						</div>
 					</section>
@@ -134,7 +134,6 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 	.content-wrapper {
 		flex: 1;
-		border-left: 2px solid #B1B1B1;
 	}
 
 	.content-container {
@@ -162,9 +161,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 	}
 
 	.subscription-box {
-		background-color: white;
-		border: 2px solid var(--secondary-color);
-		border-radius: 8px;
+		background-color: #FFFFFF;
+		border-radius: 4px;
 		padding: 40px;
 		display: flex;
 		justify-content: space-between;
@@ -217,6 +215,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		font-weight: bold;
 		cursor: pointer;
 		transition: opacity 0.2s ease;
+		text-decoration: none;
+		display: inline-block;
 	}
 
 	.subscription-btn:hover {
@@ -237,9 +237,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 	}
 
 	.account-box {
-		background-color: white;
-		border: 2px solid var(--secondary-color);
-		border-radius: 8px;
+		background-color: #FFFFFF;
+		border-radius: 4px;
 		padding: 40px;
 		display: flex;
 		flex-direction: column;
@@ -334,9 +333,8 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 	.region-box,
 	.profiles-box {
-		background-color: white;
-		border: 2px solid var(--secondary-color);
-		border-radius: 8px;
+		background-color: #FFFFFF;
+		border-radius: 4px;
 		padding: 40px;
 		display: flex;
 		flex-direction: column;
@@ -372,7 +370,7 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 		font-size: 16px;
 		font-weight: bold;
 		color: var(--secondary-color);
-		background-color: white;
+		background-color: #FFFFFF;
 		cursor: pointer;
 		appearance: none;
 		background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23000000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -460,9 +458,6 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 	}
 
 	@media (max-width: 900px) {
-		.content-wrapper {
-			border-left: none;
-		}
 
 		.content-container {
 			padding: 24px;

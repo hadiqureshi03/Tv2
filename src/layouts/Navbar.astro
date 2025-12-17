@@ -7,30 +7,40 @@ import persondata from '../assets/persondata.png';
 ---
 
 <nav class="navbar">
-  <a href="/" class="nav-item">
-    <img src={oversigt.src} alt="Oversigt" />
-    <span>OVERSIGT</span>
-  </a>
+  <div class="nav-item">
+    <a href="/" class="nav-link">
+      <img src={oversigt.src} alt="Oversigt" />
+      <span>OVERSIGT</span>
+    </a>
+  </div>
 
-  <a href="/betaling" class="nav-item">
-    <img src={kort.src} alt="Betalingskort" />
-    <span>BETALINGS<br>KORT</span>
-  </a>
+  <div class="nav-item">
+    <a href="/betaling" class="nav-link">
+      <img src={kort.src} alt="Betalingskort" />
+      <span>BETALINGS<br>KORT</span>
+    </a>
+  </div>
 
-  <a href="/enheder" class="nav-item">
-    <img src={enheder.src} alt="Enheder" />
-    <span>ENHEDER</span>
-  </a>
+  <div class="nav-item">
+    <a href="/enheder" class="nav-link">
+      <img src={enheder.src} alt="Enheder" />
+      <span>ENHEDER</span>
+    </a>
+  </div>
 
-  <a href="/samtykker" class="nav-item">
-    <img src={samtykke.src} alt="Samtykker" />
-    <span>SAMTYKKER</span>
-  </a>
+  <div class="nav-item">
+    <a href="/samtykker" class="nav-link">
+      <img src={samtykke.src} alt="Samtykker" />
+      <span>SAMTYKKER</span>
+    </a>
+  </div>
 
-  <a href="/persondata" class="nav-item">
-    <img src={persondata.src} alt="Behandling af persondata" />
-    <span>BEHANDLING AF PERSONDATA</span>
-  </a>
+  <div class="nav-item">
+    <a href="/persondata" class="nav-link">
+      <img src={persondata.src} alt="Behandling af persondata" />
+      <span>BEHANDLING AF PERSONDATA</span>
+    </a>
+  </div>
 </nav>
 
 <style>
@@ -43,14 +53,26 @@ import persondata from '../assets/persondata.png';
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    background-color: var(--background-color);
-    padding: 0;
+    gap: 12px;
+    background-color: #EFF0F2;
+    padding: 12px;
     z-index: 1000;
     flex-shrink: 0;
   }
 
   .nav-item {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .nav-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,25 +80,20 @@ import persondata from '../assets/persondata.png';
     padding: 15px 20px;
     text-decoration: none;
     color: var(--secondary-color);
-    border-bottom: 2px solid #B1B1B1;
-    transition: background-color 0.3s ease;
     height: 70px;
     gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-
-  .nav-item:hover {
-    background-color: #f5f5f5;
-  }
-
-  .nav-item img {
+  .nav-link img {
     width: 30px;
     height: 30px;
     object-fit: contain;
     flex-shrink: 0;
   }
 
-  .nav-item span {
+  .nav-link span {
     font-size: 16px;
     font-weight: normal;
     letter-spacing: 0.5px;

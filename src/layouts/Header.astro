@@ -9,10 +9,10 @@ import persondata from '../assets/persondata.png';
 
 <header>
     <div class="header-container">
-        <div class="logo-section">
+        <a href="https://tv2.dk/" class="logo-section">
             <img src={logo.src} alt="TV2 Logo" class="logo">
             <h1>MIT TV2</h1>
-        </div>
+        </a>
         
         <button class="burger-menu" id="burger-menu" aria-label="Menu">
             <span></span>
@@ -46,14 +46,10 @@ import persondata from '../assets/persondata.png';
                 </a>
             </div>
 
-            <button class="btn btn-news">
-                TV2 News
-                <span class="arrow">›</span>
-            </button>
-            <button class="btn btn-play">
+            <a href="https://play.tv2.dk/forside" class="btn btn-play">
                 TV2 Play
                 <span class="arrow">›</span>
-            </button>
+            </a>
             <button class="btn btn-login">Log ud</button>
         </nav>
     </div>
@@ -76,8 +72,7 @@ import persondata from '../assets/persondata.png';
 
     header {
         width: 100%;
-        background-color: #ffffff;
-        border-bottom: 2px solid #B1B1B1;
+        background-color: #FFFFFF;
         display: block;
     }
 
@@ -96,6 +91,13 @@ import persondata from '../assets/persondata.png';
         display: flex;
         align-items: center;
         gap: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    .logo-section:hover {
+        opacity: 0.8;
     }
 
     .logo {
@@ -130,6 +132,7 @@ import persondata from '../assets/persondata.png';
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        text-decoration: none;
     }
 
     .btn:hover {
@@ -139,10 +142,6 @@ import persondata from '../assets/persondata.png';
     .arrow {
         font-size: 1.5rem;
         line-height: 1;
-    }
-    .btn-news {
-        background-color: #d32f2f;
-        color: white;
     }
 
     .btn-play {
