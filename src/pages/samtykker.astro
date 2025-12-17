@@ -1,25 +1,67 @@
 ---
-
 import Layout from '../layouts/Layout.astro';
 import Header from '../layouts/Header.astro';
 import Navbar from '../layouts/Navbar.astro';
 import Main from '../layouts/Main.astro';
 import Footer from '../layouts/Footer.astro';
-
 ---
 
 <Layout>
   <Header />
   <div class="page-wrapper">
     <Navbar />
-
     <div class="content-wrapper">
       <Main>
-        <div class="content-container samtykker-page">
-
+        <div class="content-container">
           <h1>SAMTYKKER</h1>
-          <a href="/" class="back-link">← TILBAGE</a>
+          <a href="/" class="back-link">Tilbage</a>
+        </div>
+      </Main>
+      <Footer />
     </div>
   </div>
 </Layout>
 
+<style>
+	.page-wrapper {
+		display: flex;
+		position: relative;
+	}
+
+	.content-wrapper {
+		flex: 1;
+	}
+
+	.content-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 40px 60px 120px;
+	}
+
+	.content-container h1 {
+		font-family: 'TV2', sans-serif;
+		font-size: var(--h1-size);
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0 0 20px 0;
+		letter-spacing: 0.02em;
+	}
+
+	.back-link {
+		color: var(--primary-color);
+		text-decoration: none;
+		font-size: 18px;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+
+	@media (max-width: 900px) {
+		.content-container {
+			padding: 24px;
+		}
+
+		.content-container h1 {
+			text-align: center;
+		}
+	}
+</style>
