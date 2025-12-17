@@ -6,6 +6,10 @@ import Main from '../layouts/Main.astro'
 import Footer from '../layouts/Footer.astro'
 
 import Device from '../components/Device.astro'
+
+import phoneLogo from '../assets/device-icons/phone_logo.png';
+import tabletLogo from '../assets/device-icons/tablet_logo.png';
+import tvLogo from '../assets/device-icons/tv_logo.png';
 ---
 
 <script>
@@ -33,15 +37,35 @@ import Device from '../components/Device.astro'
                         <h1>Enheder</h1>
                         <a href="/">Tilbage</a>
 
-                            <Device />
+                            <Device
+                                deviceIcon={phoneLogo.src}
+                                deviceName="Iphone - Mobil Browser"
+                                lastUsed="12.12.2012 12:12 LT"
+                            />
 
-                            <Device />
+                            <Device
+                                deviceIcon={tabletLogo.src}
+                                deviceName="Iphone - Mobil Browser"
+                                lastUsed="12.12.2012 12:12 LT"
+                            />
 
-                            <Device />
+                            <Device
+                                deviceIcon={tvLogo.src}
+                                deviceName="Iphone - Mobil Browser"
+                                lastUsed="12.12.2012 12:12 LT"
+                            />
 
-                            <Device />
+                            <Device
+                                deviceIcon={phoneLogo.src}
+                                deviceName="Iphone - Mobil Browser"
+                                lastUsed="12.12.2012 12:12 LT"
+                            />
 
-                            <Device />
+                            <Device
+                                deviceIcon={tabletLogo.src}
+                                deviceName="Iphone - Mobil Browser"
+                                lastUsed="12.12.2012 12:12 LT"
+                            />
 
                     </div>
 

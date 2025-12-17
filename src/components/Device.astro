@@ -1,18 +1,22 @@
 ---
+interface Props {
+    deviceIcon: string;
+    deviceName: string;
+    lastUsed: string;
+}
 
-
-
+const { deviceIcon, deviceName, lastUsed } = Astro.props;
 ---
 
 
 <div class="device-box" >
     <div id="device-container">
         <div id="device-icon">
-            <img src="../assets/device-icons/phone-logo.png" />
+            <img src={deviceIcon} alt={deviceName} />
         </div>
         <div>
-            <p>    Iphone - Mobil Browser </p>
-            <p>    12.12.2012 12:12 LT </p>
+            <p>{deviceName}</p>
+            <p>{lastUsed}</p>
         </div>
         <div>
             ^
@@ -21,7 +25,7 @@
 
         </div>
 
-        <button id="device-button"> 
+        <button id="device-button">
             Log Ud
         </button>
     </div>
@@ -29,7 +33,6 @@
 
 <style>
     .device-box {
-        border: 2px solid grey;
         padding: 3%;
         margin-top: 20px;
         border-radius: 10px;
@@ -55,7 +58,15 @@
     #device-icon {
         width: 50px;
         height: 50px;
-        background-color: red
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #device-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     #border-seperator {
