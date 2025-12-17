@@ -28,19 +28,113 @@ import mastercard from '../assets/mastercard.png';
 								<p class="payment-date">01 JANUAR 2026</p>
 							</div>
 
-							<div class="payment-row">
-								<span class="payment-label-text">ADMINISTRER BETALINGSMETODE</span>
-								<span class="arrow">›</span>
+							<div class="payment-row expandable-row" id="payment-method-row">
+								<div class="row-header">
+									<span class="payment-label-text">ADMINISTRER BETALINGSMETODE</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<div class="payment-form">
+										<h3>VÆLG NY BETALINGSMETODE</h3>
+										<p class="form-description">ALLE FELTER ER OBLIGATORISKE, MEDMINDRE ANDET ER MARKERET.</p>
+										<label>
+											KORTNUMMER
+											<input type="text" placeholder="Kortnummer" id="kortnummer" required />
+										</label>
+										<div class="form-row">
+											<label>
+												UDLØBSDATO
+												<input type="text" placeholder="Udløbsdato" id="udlobsdato" required />
+											</label>
+											<label>
+												SIKKERHEDSKODE
+												<input type="text" placeholder="Sikkerhedskode" id="sikkerhedskode" required />
+											</label>
+										</div>
+										<p class="form-save-message" id="payment-save-message">Dine ændringer er blevet gemt</p>
+										<div class="form-buttons">
+											<button type="button" class="btn-save" id="btn-payment-save">Afbryd</button>
+											<button type="button" class="btn-cancel" id="btn-payment-confirm">Bekræft</button>
+										</div>
+									</div>
+								</div>
 							</div>
 
-							<div class="payment-row">
-								<span class="payment-label-text">SE BETALINGSHISTORIK</span>
-								<span class="arrow">›</span>
+							<div class="payment-row expandable-row" id="payment-history-row">
+								<div class="row-header">
+									<span class="payment-label-text">SE BETALINGSHISTORIK</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<div class="history-container">
+										<h3>KØBSHISTORIK</h3>
+										<div class="history-list">
+											<div class="history-item">
+												<div class="history-date">
+													<p class="date-text">DEN 31. JAN. 2025</p>
+													<p class="service-text">SKYSHOWTIME</p>
+												</div>
+												<div class="history-action">
+													<span class="arrow-small">›</span>
+													<span class="action-text">VIS KVITTERING</span>
+												</div>
+											</div>
+											<div class="history-item">
+												<div class="history-date">
+													<p class="date-text">DEN 31. FEB. 2025</p>
+													<p class="service-text">SKYSHOWTIME</p>
+												</div>
+												<div class="history-action">
+													<span class="arrow-small">›</span>
+													<span class="action-text">VIS KVITTERING</span>
+												</div>
+											</div>
+											<div class="history-item">
+												<div class="history-date">
+													<p class="date-text">DEN 31. MAR. 2025</p>
+													<p class="service-text">SKYSHOWTIME</p>
+												</div>
+												<div class="history-action">
+													<span class="arrow-small">›</span>
+													<span class="action-text">VIS KVITTERING</span>
+												</div>
+											</div>
+											<div class="history-item">
+												<div class="history-date">
+													<p class="date-text">DEN 31. APR. 2025</p>
+													<p class="service-text">SKYSHOWTIME</p>
+												</div>
+												<div class="history-action">
+													<span class="arrow-small">›</span>
+													<span class="action-text">VIS KVITTERING</span>
+												</div>
+											</div>
+											<div class="history-item">
+												<div class="history-date">
+													<p class="date-text">DEN 31. MAJ. 2025</p>
+													<p class="service-text">SKYSHOWTIME</p>
+												</div>
+												<div class="history-action">
+													<span class="arrow-small">›</span>
+													<span class="action-text">VIS KVITTERING</span>
+												</div>
+											</div>
+										</div>
+										<button class="btn-see-more">Se mere</button>
+									</div>
+								</div>
 							</div>
 
-							<div class="payment-row">
-								<span class="payment-label-text">SKIFT BETALINGSDATO</span>
-								<span class="arrow">›</span>
+							<div class="payment-row expandable-row" id="payment-date-row">
+								<div class="row-header">
+									<span class="payment-label-text">SKIFT BETALINGSDATO</span>
+									<span class="arrow-icon">›</span>
+								</div>
+								<div class="expandable-content">
+									<div class="date-container">
+										<p>Dummy indhold</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -50,6 +144,67 @@ import mastercard from '../assets/mastercard.png';
 		</div>
 	</div>
 </Layout>
+
+<script>
+	// @ts-nocheck
+	// Dropdown functionalitet for betalingsmetode
+	const paymentMethodRow = document.getElementById('payment-method-row');
+	const paymentRowHeader = paymentMethodRow?.querySelector('.row-header');
+
+	paymentRowHeader?.addEventListener('click', () => {
+		paymentMethodRow?.classList.toggle('expanded');
+	});
+
+	// Dropdown functionalitet for betalingshistorik
+	const paymentHistoryRow = document.getElementById('payment-history-row');
+	const historyRowHeader = paymentHistoryRow?.querySelector('.row-header');
+
+	historyRowHeader?.addEventListener('click', () => {
+		paymentHistoryRow?.classList.toggle('expanded');
+	});
+
+	// Dropdown functionalitet for betalingsdato
+	const paymentDateRow = document.getElementById('payment-date-row');
+	const dateRowHeader = paymentDateRow?.querySelector('.row-header');
+
+	dateRowHeader?.addEventListener('click', () => {
+		paymentDateRow?.classList.toggle('expanded');
+	});
+
+	// Button funktionalitet
+	const btnPaymentSave = document.getElementById('btn-payment-save');
+	const btnPaymentConfirm = document.getElementById('btn-payment-confirm');
+	const paymentSaveMessage = document.getElementById('payment-save-message');
+	const kortnummer = document.getElementById('kortnummer');
+	const udlobsdato = document.getElementById('udlobsdato');
+	const sikkerhedskode = document.getElementById('sikkerhedskode');
+
+	btnPaymentConfirm?.addEventListener('click', () => {
+		// Check required fields
+		if (kortnummer && udlobsdato && sikkerhedskode && kortnummer.value && udlobsdato.value && sikkerhedskode.value) {
+			// Viser beskeden
+			paymentSaveMessage?.classList.add('show');
+
+			// Fjerner values efter gemning
+			kortnummer.value = '';
+			udlobsdato.value = '';
+			sikkerhedskode.value = '';
+
+			// Gemmer besked efter 3 seconds
+			setTimeout(() => {
+				paymentSaveMessage?.classList.remove('show');
+			}, 3000);
+		}
+	});
+
+	// Afbryd button funktionalitet
+	btnPaymentSave?.addEventListener('click', () => {
+		// Fjerner alle values
+		if (kortnummer) kortnummer.value = '';
+		if (udlobsdato) udlobsdato.value = '';
+		if (sikkerhedskode) sikkerhedskode.value = '';
+	});
+</script>
 
 <style>
 	.page-wrapper {
@@ -146,11 +301,8 @@ import mastercard from '../assets/mastercard.png';
 
 	.payment-row {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 16px 0;
+		flex-direction: column;
 		border-bottom: 1px solid #E0E0E0;
-		cursor: pointer;
 		transition: background-color 0.2s ease;
 	}
 
@@ -160,6 +312,15 @@ import mastercard from '../assets/mastercard.png';
 
 	.payment-row:last-of-type {
 		border-bottom: none;
+	}
+
+	.row-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 16px 0;
+		cursor: pointer;
+		width: 100%;
 	}
 
 	.payment-label-text {
@@ -173,6 +334,231 @@ import mastercard from '../assets/mastercard.png';
 		line-height: 1;
 		color: var(--secondary-color);
 		margin-right: 10px;
+	}
+
+	.arrow-icon {
+		font-size: 1.5rem;
+		line-height: 1;
+		color: var(--secondary-color);
+		margin-right: 10px;
+		transition: transform 0.3s ease;
+	}
+
+	.expandable-row.expanded .arrow-icon {
+		transform: rotate(90deg);
+	}
+
+	.expandable-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease;
+	}
+
+	.expandable-row.expanded .expandable-content {
+		max-height: 800px;
+		padding: 20px 0;
+	}
+
+	.payment-form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.payment-form h3 {
+		font-family: 'TV2', sans-serif;
+		font-size: 18px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0;
+		letter-spacing: 0.5px;
+	}
+
+	.form-description {
+		font-size: 12px;
+		color: var(--secondary-color);
+		margin: 0;
+	}
+
+	.payment-form label {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		font-size: 12px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		letter-spacing: 0.5px;
+	}
+
+	.payment-form input {
+		width: 100%;
+		padding: 12px 16px;
+		border: 2px solid var(--secondary-color);
+		border-radius: 4px;
+		font-size: 16px;
+		color: var(--secondary-color);
+		background-color: #FFFFFF;
+		box-sizing: border-box;
+	}
+
+	.payment-form input::placeholder {
+		color: #999;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+	}
+
+	.form-save-message {
+		font-size: 14px;
+		font-weight: bold;
+		color: #078A1D;
+		margin: 0;
+		opacity: 0;
+		transition: opacity 0.5s ease-in-out;
+		pointer-events: none;
+	}
+
+	.form-save-message.show {
+		opacity: 1;
+	}
+
+	.form-buttons {
+		display: flex;
+		gap: 12px;
+		margin-top: 12px;
+	}
+
+	.btn-save,
+	.btn-cancel {
+		padding: 12px 32px;
+		border-radius: 25px;
+		border: none;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	.btn-save {
+		background-color: rgb(235, 235, 238);
+		color: var(--secondary-color);
+	}
+
+	.btn-cancel {
+		background-color: var(--secondary-color);
+		color: white;
+	}
+
+	.btn-save:hover,
+	.btn-cancel:hover {
+		opacity: 0.9;
+	}
+
+	.history-container {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.history-container h3 {
+		font-family: 'TV2', sans-serif;
+		font-size: 18px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0;
+		letter-spacing: 0.5px;
+	}
+
+	.history-list {
+		background-color: rgb(235, 235, 238);
+		border-radius: 8px;
+		padding: 16px 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		margin: 0 40px;
+	}
+
+	.history-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px 0;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	.history-item:last-child {
+		border-bottom: none;
+	}
+
+	.history-date {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.date-text {
+		font-size: 14px;
+		font-weight: bold;
+		color: var(--secondary-color);
+		margin: 0;
+	}
+
+	.service-text {
+		font-size: 14px;
+		color: var(--secondary-color);
+		margin: 0;
+	}
+
+	.history-action {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.arrow-small {
+		font-size: 1.2rem;
+		line-height: 1;
+		color: var(--secondary-color);
+	}
+
+	.action-text {
+		font-size: 12px;
+		font-weight: bold;
+		color: var(--secondary-color);
+	}
+
+	.btn-see-more {
+		background-color: rgb(161, 161, 169);
+		color: white;
+		border: none;
+		border-radius: 25px;
+		padding: 12px 32px;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+		align-self: flex-start;
+		margin-left: 40px;
+	}
+
+	.btn-see-more:hover {
+		opacity: 0.9;
+	}
+
+	.date-container {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.date-container p {
+		font-size: 14px;
+		color: var(--secondary-color);
+		margin: 0;
 	}
 
 	@media (max-width: 900px) {
