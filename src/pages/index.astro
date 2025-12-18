@@ -11,7 +11,33 @@ import tv2ikon3 from '../assets/tv2ikon3.svg';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+
+
+
+//https://fiyeiwrqesmfmqbrdowo.supabase.co
 ---
+
+<script>
+
+const endpoint = 'https://fiyeiwrqesmfmqbrdowo.supabase.co/rest/v1/Devices'
+const key = 'sb_publishable_lihVoWUrioW6Qv-LTMec1Q_fiLIZ-gp'
+
+const options = {
+    method: 'GET',
+    headers: {
+        apikey: key,
+    },
+};
+
+const data = await fetch(endpoint, options)
+.then((res) => res.json())
+
+console.log('other stuff')
+console.log(data)
+
+console.log('hello there')
+</script>
 
 <!-- Husk lave ref link i burger menu -->
 <Layout>

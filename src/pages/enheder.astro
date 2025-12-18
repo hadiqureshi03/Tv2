@@ -10,6 +10,24 @@ import Device from '../components/Device.astro'
 import phoneLogo from '../assets/device-icons/phone_logo.png';
 import tabletLogo from '../assets/device-icons/tablet_logo.png';
 import tvLogo from '../assets/device-icons/tv_logo.png';
+
+
+
+const endpoint = 'https://fiyeiwrqesmfmqbrdowo.supabase.co/rest/v1/Devices'
+const key = 'sb_publishable_lihVoWUrioW6Qv-LTMec1Q_fiLIZ-gp'
+
+const options = {
+    method: 'GET',
+    headers: {
+        apikey: key,
+    },
+};
+
+const data = await fetch(endpoint, options)
+.then((res) => res.json())
+
+console.log(data)
+
 ---
 
 <script>
@@ -37,36 +55,9 @@ import tvLogo from '../assets/device-icons/tv_logo.png';
                         <h1>Enheder</h1>
                         <a href="/">Tilbage</a>
 
-                            <Device
-                                deviceIcon={phoneLogo.src}
-                                deviceName="Iphone - Mobil Browser"
-                                lastUsed="12.12.2012 12:12 LT"
-                            />
+                        {data.map((elem: { device_image: string; type: string; brand: string; }) => <Device deviceIcon={elem.device_image} deviceName={elem.type + ' - ' + elem.brand} lastUsed="12.12.2012 12:12 LT" />)}
 
-                            <Device
-                                deviceIcon={tabletLogo.src}
-                                deviceName="Iphone - Mobil Browser"
-                                lastUsed="12.12.2012 12:12 LT"
-                            />
-
-                            <Device
-                                deviceIcon={tvLogo.src}
-                                deviceName="Iphone - Mobil Browser"
-                                lastUsed="12.12.2012 12:12 LT"
-                            />
-
-                            <Device
-                                deviceIcon={phoneLogo.src}
-                                deviceName="Iphone - Mobil Browser"
-                                lastUsed="12.12.2012 12:12 LT"
-                            />
-
-                            <Device
-                                deviceIcon={tabletLogo.src}
-                                deviceName="Iphone - Mobil Browser"
-                                lastUsed="12.12.2012 12:12 LT"
-                            />
-
+                         
                     </div>
 
                 </div>
